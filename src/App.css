@@ -1,0 +1,113 @@
+/* App.css */
+
+/* Apply styles to the entire page */
+body {
+  background-image: url('public\images.jpg'); /* Adjust the path to your image file */
+  background-size: cover; /* Scale the image to cover the entire screen */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-attachment: fixed; /* Fixed background */
+}
+
+
+/* Style the header */
+.App-header {
+  background-color: #19d238;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the main content container */
+.container {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+/* Style specific components (modify as needed) */
+/* BankInformation.css */
+.BankInformation {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.BankInformation h2 {
+  color: lime;
+}
+
+/* BankInfoDetails.css */
+.BankInfoDetails {
+  background-color: #19ae43;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Binterface.css */
+.Binterface {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.Binterface h3 {
+  color: #1976D2;
+}
+
+/* Datafetch.css */
+.Datafetch {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Deposit.css */
+.Deposit {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.Deposit label {
+  font-weight: bold;
+}
+
+/* Login.css */
+.Login {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.Login form {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* QRCodeGenerator.css */
+.QRCodeGenerator {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.QRCodeGenerator img {
+  max-width: 100%;
+  height: auto;
+}

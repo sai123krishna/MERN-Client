@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+   
+  </body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Application</title>
+    <style>
+      body {
+          background-image: url('images.jpg'); /* Path to your background image */
+          background-size: cover; /* Ensure the image covers the entire background */
+          margin: 0; /* Remove default margin */
+          font-family: Arial, sans-serif; /* Set a generic font family */
+      }
+
+      /* Additional styles can be added as needed */
+  </style>
+</head>
+<body>
+    <div id="app">
+        <div id="loanSection" style="display: none;">
+            <p>How many loans have you taken?</p>
+            <input type="radio" name="loanCount" value="1"> 1
+            <input type="radio" name="loanCount" value="2"> 2
+            <input type="radio" name="loanCount" value="more"> More than 2
+            <button id="checkLoanCount">Check Eligibility</button>
+            <div id="eligibilityMessage"></div>
+            <div id="loanButtons"></div>
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <script>
+        const loanTypes = [
+            { id: 1, name: "Personal Loan", amount: 10000 },
+            { id: 2, name: "Home Loan", amount: 100000 },
+            { id: 3, name: "Car Loan", amount: 20000 }
+        ];
+
+        const takenLoans = [];
+        let loanCountValue = '';
+
+        document.getElementById('checkLoanCount').addEventListener('click', checkLoanCount);
+
+        function checkLoanCount() {
+            const selectedLoanCount = document.querySelector('input[name="loanCount"]:checked');
+            const eligibilityMessageElement = document.getElementById('eligibilityMessage');
+            const loanButtonsElement = document.getElementById('loanButtons');
+
+            if (selectedLoanCount) {
+                loanCountValue = selectedLoanCount.value;
+                if (loanCountValue === 'more') {
+                    eligibilityMessageElement.innerText = "Sorry, you are not eligible for more loans.";
+                    loanButtonsElement.innerHTML = ""; // Clear loan buttons
+                } else {
+                    eligibilityMessageElement.innerText = "You are eligible for loans.";
+                    selectedLoanCount.disabled = true; // Disable the selected input
+                    displayLoanButtons();
+                }
+            } else {
+                eligibilityMessageElement.innerText = "Please select a loan count.";
+                loanButtonsElement.innerHTML = ""; // Clear loan buttons
+            }
+        }
+
+        function displayLoanButtons() {
+            const loanButtonsElement = document.getElementById('loanButtons');
+            loanButtonsElement.innerHTML = ""; // Clear loan buttons
+
+            loanTypes.forEach(loanType => {
+                const loanButton = document.createElement('button');
+                loanButton.textContent = loanType.name + " (" + loanType.amount + ")";
+                loanButton.addEventListener('click', () => applyForLoan(loanType));
+                loanButtonsElement.appendChild(loanButton);
+            });
+        }
+
+        function applyForLoan(loanType) {
+            const agreement = confirm(`You've selected a ${loanType.name} loan of $${loanType.amount}. Do you agree to proceed?`);
+            const outputElement = document.getElementById('output');
+
+            if (agreement) {
+                takenLoans.push(loanType.id);
+                outputElement.innerText = "Loan application in progress...";
+                setTimeout(function () {
+                    outputElement.innerText = "Congratulations! You are selected for a loan. Please come to the bank.";
+                }, 2000); // 2000 milliseconds = 2 seconds
+            } else {
+                outputElement.innerTexT = "Thank you for considering our loans. Please visit again!";
+                setTimeout(function () {
+                    outputElement.innerText = "Ta ta! Bye bye! You saved our money!";
+                }, 2000); // 2000 milliseconds = 2 seconds
+            }
+        }
+        
+        // Display the login section when the page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            const loanSection = document.getElementById('loanSection');
+            loanSection.style.display = 'block';
+        });
+    </script>
+</body>
+<head>
+    <table>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+        </tr>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+        </tr>
+    </table>
+<head><iframe width="600" height="400" frameborder="0" srcdoc="<p style='font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px; text-align: center; color: #2ecc71;'>My name is <span style='color: #e74c3c; font-weight: bold;'>Ram</span>.</p>" style="background-color: #34495e; color: #ecf0f1; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);"></iframe>
+
+
+</head>
+</head>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attractive Pie Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<canvas id="myPieChart" width="400" height="400"></canvas>
+
+<script>
+    // Initial data for the pie chart
+    var initialData = {
+        labels: ['Category A', 'Category B', 'Category C'],
+        datasets: [{
+            data: [30, 10, 30],
+            backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+            hoverBackgroundColor: ['#ff4268', '#3498db', '#ffbb33'],
+            borderWidth: 2,
+            borderColor: '#ffffff'
+        }]
+    };
+
+    // Get the canvas element
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+
+    // Create the pie chart
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: initialData,
+        options: {
+            responsive: false, // Disable responsiveness
+            maintainAspectRatio: false, // Disable aspect ratio
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    fontColor: '#333333'
+                }
+            }
+        }
+    });
+
+    // Function to update the pie chart data
+    function updateChartData(newData) {
+        myPieChart.data.datasets[0].data = newData;
+        myPieChart.update(); // Update the chart to reflect the changes
+    }
+
+    // Example: Update the chart after a delay
+    setTimeout(function () {
+        var newData = [20, 10, 30]; // New data for the pie chart
+        updateChartData(newData);
+    }, 3000); // Update after 3 seconds (adjust as needed)
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementById Basic Example</title>
+    <style>
+        /* Some basic styles for demonstration */
+        #myDiv {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- An HTML element with a unique ID -->
+<div id="myDiv">Click me!</div>
+
+<script>
+    // Get a reference to the element by its ID
+    var myElement = document.getElementById('myDiv');
+
+    // Add a click event listener to the element
+    myElement.addEventListener('click', function() {
+        // Change the background color and text content on click
+        myElement.style.backgroundColor = '#3498db';
+        myElement.textContent = 'Clicked!';
+        
+        // Set the 'username' attribute and display its value in the content
+        myElement.setAttribute('username', 'Ram');
+        myElement.textContent += ' Username: ' + myElement.getAttribute('username');
+    });
+</script>
+
+</body>
+</html>
